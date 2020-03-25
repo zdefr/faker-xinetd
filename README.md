@@ -1,2 +1,7 @@
 # faker-xinetd
-A program likes xinetd code by myself. It's not work now. 
+四川大学计算机网络作业：
+web service
+主要功能：
+转发http帧
+允许多端访问
+允许用户自定义端口号
