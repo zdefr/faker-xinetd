@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
 	socklen_t ysize;
 	pid_t id[10]={0};
 	int count=0;	//空闲id号
-	char iort[10]="10086"; 	//默认端口10086
+	char iort[10]="80"; 	//默认端口10086
 
 	if(argc>1){
 		strcpy(iort, argv[1]);
