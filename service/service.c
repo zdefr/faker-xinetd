@@ -80,9 +80,14 @@ int main(int argc, char* argv[]){
 				exit(1);
 			}
 			//char argv_set[2][10];
-			
+			char rdir[50];
+			if(getcwd(rdir,50)==NULL){
+				perror("getcwd");
+				exit(1);
+			}
+			strcat(rdir,"/fhttp/fhttp");
 			//strcpy(argv_set[1],"/home/zde/xhttpd");
-			if(execv("/home/ubuntu/faker-xinetd/service/fhttp/fhttp",argv)<0){
+			if(execv(rdir,argv)<0){
 				perror("execv");
 				exit(1);
 			}
