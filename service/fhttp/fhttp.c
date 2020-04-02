@@ -96,6 +96,21 @@ void repict(char* pro,char* dir){
 	}while(count==100);
 }
 
+void remp3(char* pro,char* dir){
+	char buf[100];
+	int count;
+	int hw = open(dir,O_RDONLY);
+	if(hw<0){
+		netperror("miss dir",pro);
+		exit(1);
+	}
+	rehead(pro,"200","ok","audio/mp3","utf-8");
+	do{
+		count = read(hw,(void*)buf,100);
+		write(fileno(stdout),(void*)buf,count);
+	}while(count==100);
+}
+
 //主函数
 int main(){
 	char mid[100];
@@ -120,7 +135,7 @@ int main(){
 		netperror("获取目录失败",pro);
 		exit(1);
 	}
-	rdir[strlen(rdir)-8]='\0';
+	//rdir[strlen(rdir)-8]='\0';
 	strcat(rdir,"/bin");
 	
 	if(strcmp(dir,"/")==0){
@@ -148,6 +163,7 @@ int main(){
 		int num;
 		strcpy(fdir,rdir);
 		split(fdir,".",tail,&num);
+		
 		if(strcmp(tail[num-1],"html")==0){
 			rehtml(pro,rdir);
 			exit(1);
@@ -155,6 +171,11 @@ int main(){
 
 		if(strcmp(tail[num-1],"jpg")==0){
 			repict(pro,rdir);
+			exit(1);
+		}
+
+		if(strcmp(tail[num-1],"mp3")==0){
+			remp3(pro,rdir);
 			exit(1);
 		}
 
