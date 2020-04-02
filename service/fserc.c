@@ -86,7 +86,7 @@ int main(int argc, char* argv[]){
 				exit(1);
 			}
 			strcat(rdir,"/fhttp/fhttp");
-		
+			printf("%s\n",rdir);	
 			//strcpy(argv_set[1],"/home/zde/xhttpd");
 			if(execv(rdir,argv)<0){
 				perror("execv");
